@@ -256,14 +256,12 @@ export default mixins(Themeable).extend({
         toggleSelectAll: this.toggleSelectAll,
       }
 
-      return this.$createElement('div', {
-        staticClass: 'v-data-iterator',
-      }, [
+      return [
         getSlot(this, 'header', outerProps, true),
         this.genItems(props),
         this.genFooter(props),
         getSlot(this, 'footer', outerProps, true),
-      ]) as any
+      ]
     },
   },
 
