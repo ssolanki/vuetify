@@ -22,7 +22,7 @@ export default Vue.extend({
     readonly: Boolean,
     disabled: Boolean,
     scrollable: Boolean,
-    showAmPmInTitle: Boolean,
+    showAmPmInHeader: Boolean,
   },
 
   methods: {
@@ -39,7 +39,7 @@ export default Vue.extend({
           readonly: this.readonly,
           period: props.period,
           scrollable: this.scrollable,
-          showAmPm: !this.showAmPmInTitle,
+          showAmPm: !this.showAmPmInHeader,
           selectMode: props.selectMode,
           size: this.width,
           time: props.time,
@@ -63,7 +63,7 @@ export default Vue.extend({
           period: props.period,
           readonly: this.readonly,
           selectMode: props.selectMode,
-          showAmPm: this.showAmPmInTitle,
+          showAmPm: this.showAmPmInHeader,
           time: props.time,
           useSeconds: props.useSeconds,
         },

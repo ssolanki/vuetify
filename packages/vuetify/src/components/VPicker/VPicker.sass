@@ -2,8 +2,8 @@
 @import './_variables.scss'
 
 // Theme
-+theme(v-picker__title) using ($material)
-  background: map-deep-get($material, 'picker', 'title')
++theme(v-picker__header) using ($material)
+  background: map-deep-get($material, 'picker', 'header')
 
 +theme(v-picker__body) using ($material)
   background: map-deep-get($material, 'picker', 'body')
@@ -20,28 +20,28 @@
 .v-picker--full-width
   display: flex
 
-.v-picker__title
+.v-picker__header
   color: map-get($shades, 'white')
   border-top-left-radius: $picker-border-radius
   border-top-right-radius: $picker-border-radius
-  padding: $picker-title-padding
+  padding: $picker-header-padding
 
-.v-picker__title__btn
+.v-picker__header__btn
   user-select: none
   transition: $primary-transition
 
-  &:not(.v-picker__title__btn--active)
+  &:not(.v-picker__header__btn--active)
     opacity: $picker-inactive-btn-opacity
     cursor: pointer
 
     &:hover:not(:focus)
       opacity: 1
 
-.v-picker__title__btn--readonly
+.v-picker__header__btn--readonly
   pointer-events: none
 
 
-.v-picker__title__btn--active
+.v-picker__header__btn--active
   opacity: $picker-active-btn-opacity
 
 .v-picker__body
@@ -62,16 +62,16 @@
       position: absolute
 
 .v-picker--landscape
-  .v-picker__title
+  .v-picker__header
     border-top-right-radius: 0
     border-bottom-right-radius: 0
-    width: $picker-landscape-title-width
+    width: $picker-landscape-header-width
     position: absolute
     top: 0
     left: 0
     height: 100%
     z-index: 1
 
-  .v-picker__body:not(.v-picker__body--no-title),
-  .v-picker__actions:not(.v-picker__actions--no-title)
-    margin-left: $picker-landscape-title-width
+  .v-picker__body:not(.v-picker__body--no-header),
+  .v-picker__actions:not(.v-picker__actions--no-header)
+    margin-left: $picker-landscape-header-width

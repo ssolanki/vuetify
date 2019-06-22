@@ -283,7 +283,7 @@ describe('VDatePicker.ts', () => { // eslint-disable-line max-statements
     const wrapper = mountFunction({
       propsData: {
         value: '2013-05-07',
-        noTitle: true,
+        hideHeader: true,
       },
     })
 

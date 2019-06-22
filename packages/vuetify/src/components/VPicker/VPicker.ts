@@ -45,7 +45,7 @@ export default mixins(Colorable, Themeable).extend({
 
   props: {
     headerColor: String,
-    noTitle: Boolean,
+    hideHeader: Boolean,
     fullWidth: Boolean,
     landscape: Boolean,
     transition: {
@@ -59,9 +59,9 @@ export default mixins(Colorable, Themeable).extend({
   },
 
   computed: {
-    computedTitleColor (): string | false {
-      const defaultTitleColor = this.isDark ? false : (this.color || 'primary')
-      return this.headerColor || defaultTitleColor
+    computedHeaderColor (): string | false {
+      const defaultHeaderColor = this.isDark ? false : (this.color || 'primary')
+      return this.headerColor || defaultHeaderColor
     },
     computedWidth (): number {
       if (!this.width || parseInt(this.width, 10) < minWidth) return minWidth
@@ -70,13 +70,13 @@ export default mixins(Colorable, Themeable).extend({
   },
 
   methods: {
-    genTitle () {
-      return this.$createElement('div', this.setBackgroundColor(this.computedTitleColor, {
-        staticClass: 'v-picker__title',
+    genHeader () {
+      return this.$createElement('div', this.setBackgroundColor(this.computedHeaderColor, {
+        staticClass: 'v-picker__header',
         'class': {
-          'v-picker__title--landscape': this.landscape,
+          'v-picker__header--landscape': this.landscape,
         },
-      }), this.$slots.title)
+      }), this.$slots.header)
     },
     genBodyTransition () {
       return this.$createElement('transition', {
@@ -89,7 +89,7 @@ export default mixins(Colorable, Themeable).extend({
       return this.$createElement('div', {
         staticClass: 'v-picker__body',
         class: {
-          'v-picker__body--no-title': this.noTitle,
+          'v-picker__body--no-header': this.hideHeader,
           ...this.themeClasses,
         },
         style: this.fullWidth ? undefined : {
@@ -103,7 +103,7 @@ export default mixins(Colorable, Themeable).extend({
       return this.$createElement('div', {
         staticClass: 'v-picker__actions v-card__actions',
         class: {
-          'v-picker__actions--no-title': this.noTitle,
+          'v-picker__actions--no-header': this.hideHeader,
         },
       }, this.$slots.actions)
     },
@@ -118,7 +118,7 @@ export default mixins(Colorable, Themeable).extend({
         ...this.themeClasses,
       },
     }, [
-      this.$slots.title && !this.noTitle && this.genTitle(),
+      this.$slots.header && !this.hideHeader && this.genHeader(),
       this.genBody(),
       this.$slots.actions && this.genActions(),
     ])

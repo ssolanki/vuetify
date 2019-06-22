@@ -65,7 +65,7 @@ describe('VTimePicker.ts', () => {
     const wrapper = mountFunction({
       propsData: {
         value: '09:12:34',
-        noTitle: true,
+        hideHeader: true,
       },
     })
 

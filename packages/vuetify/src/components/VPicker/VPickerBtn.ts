@@ -19,13 +19,13 @@ export default Vue.extend({
       if (data.on && data.on.click) wrapInArray(data.on.click).forEach(f => f())
     }
 
-    const staticClass = ['v-picker__title__btn', data.staticClass].filter(v => !!v).join(' ')
+    const staticClass = ['v-picker__header__btn', data.staticClass].filter(v => !!v).join(' ')
 
     return h('div', {
       staticClass: staticClass.trim(),
       'class': {
-        'v-picker__title__btn--active': props.active,
-        'v-picker__title__btn--readonly': props.readonly,
+        'v-picker__header__btn--active': props.active,
+        'v-picker__header__btn--readonly': props.readonly,
       },
       on: (props.active || props.readonly) ? undefined : { click },
     }, computedSlots.default)

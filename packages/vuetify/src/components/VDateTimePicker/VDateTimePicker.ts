@@ -34,7 +34,7 @@ export default Vue.extend({
       type: Object,
       default: () => ({
         scrollable: false,
-        showAmPmInTitle: false,
+        showAmPmInHeader: true,
       }),
     } as PropValidator<VTimeProps>,
     dateProps: {
@@ -119,7 +119,8 @@ export default Vue.extend({
         }),
         this.$createElement(VTimePickerTitle, {
           props: {
-            isAmPm: this.timeProps.showAmPmInTitle && timeProps.isAmPm,
+            isAmPm: timeProps.isAmPm,
+            showAmPm: this.timeProps.showAmPmInHeader,
             disabled: this.disabled,
             time: timeProps.time,
             period: timeProps.period,
@@ -182,7 +183,7 @@ export default Vue.extend({
           readonly: this.readonly,
           period: props.period,
           scrollable: this.timeProps.scrollable,
-          showAmPm: !this.timeProps.showAmPmInTitle,
+          showAmPm: !this.timeProps.showAmPmInHeader,
           selectMode: props.selectMode,
           size: this.width,
           time: props.time,
@@ -226,7 +227,7 @@ export default Vue.extend({
       staticClass: 'v-date-time-picker',
       props: this.$props,
     }, [
-      h('template', { slot: 'title' }, [
+      h('template', { slot: 'header' }, [
         this.genHeaders(),
         this.genTabs(),
       ]),
